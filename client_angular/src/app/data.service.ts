@@ -12,7 +12,7 @@ export class DataService {
 
   constructor(private _http: HttpClient, private config: AppConfig) {}
 
-  // GETS
+  // Categories
   getCategories(){
     return this._http.get<Response[]>(this.config.api+'Categories')
   }
@@ -32,6 +32,29 @@ export class DataService {
 
   deleteCategory(idCategory){
     return this._http.delete<Response[]>(this.config.api+'Categories/'+idCategory);
+  }
+
+  // Bills
+
+  getBills(){
+    return this._http.get<Response[]>(this.config.api+'Bills')
+  }
+
+  getBill(idbill){
+    return this._http.get<Response[]>(this.config.api+'Bills/'+idbill)
+  }
+
+  saveBill(data){
+    data.idbill = 0;
+    return this._http.post<Response[]>(this.config.api+'Bills', data);
+  }
+  
+  updateBill(idbill, data){
+    return this._http.patch<Response[]>(this.config.api+'Bills/'+idbill, data);
+  }
+
+  deleteBill(idbill){
+    return this._http.delete<Response[]>(this.config.api+'Bills/'+idbill);
   }
  
 }

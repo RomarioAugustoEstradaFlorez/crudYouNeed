@@ -1,0 +1,139 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-header card-header-tabs card-header-info">
+                      <div class="nav-tabs-navigation">
+                          <div class="nav-tabs-wrapper">
+                              <ul class="nav nav-tabs" data-tabs="tabs">
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link active" href="#listofBills" [ngClass]="{ active: isSet(1) }" (click)="setTab(1)" data-toggle="tab">
+                                          <i class="material-icons">list</i> Lista de facturas
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link" href="#createbill" [ngClass]="{ active: isSet(2) }" (click)="setTab(2)" data-toggle="tab">
+                                          <i class="material-icons">code</i> Crear
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item" *ngIf="showEditForm == true">
+                                      <a mat-button class="nav-link" href="#editbill" [ngClass]="{ active: isSet(3) }" (click)="setTab(3)" data-toggle="tab">
+                                          <i class="material-icons">cloud</i> Editar - {{editBillForm.value.name}}
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <div class="tab-content">
+                          <!-- Listar categorias -->
+                          <div class="tab-pane" [ngClass]="{ active: isSet(1) }" id="listofBills">
+                              <div class="table-responsive">
+                                  <table class="table">
+                                      <thead class=" text-info">
+                                          <th>Codigo</th>
+                                          <th>Valor neto</th>
+                                          <th>IVA</th>
+                                          <th>Total</th>
+                                          <th>Acciones</th>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let bill of bills">
+                                              <td>{{bill.name}}</td>
+                                              <td>{{bill.value}}</td>
+                                              <td>{{bill.iva}}</td>
+                                              <td>{{bill.total}}</td>
+                                              <td class="text-info">
+                                                <button mat-raised-button class="btn btn-info btn-sm" (click)="editBill(bill.idbill)">
+                                                    <i class="material-icons">create</i>
+                                                    Editar
+                                                </button>
+                                                <button mat-raised-button class="btn btn-danger btn-sm" (click)="deleteBill(bill.idbill)">
+                                                    <i class="material-icons">indeterminate_check_box</i>
+                                                    Eliminar
+                                                </button>
+                                              </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                          <!-- Crear factura -->
+                          <div class="tab-pane" [ngClass]="{ active: isSet(2) }" id="createbill">
+                              <form action="" [formGroup]="createBillForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Código" maxlength="50" type="text" class="form-control" id="name" name="name" formControlName="name">
+                                            </mat-form-field>
+                                            <span class="label-error" *ngIf="createBillForm.controls.name.errors?.required  && createBillForm.controls.name.touched">Este campo es obligatorio</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Valor neto" type="number" class="form-control" id="value" name="value" formControlName="value" (keyup)="createForIvaResult()">
+                                            </mat-form-field>
+                                            <span class="label-error" *ngIf="createBillForm.controls.value.errors?.required  && createBillForm.controls.value.touched">Este campo es obligatorio</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="IVA" type="number" class="form-control" id="iva" name="iva" formControlName="iva" (keyup)="createForIvaResult()">
+                                            </mat-form-field>
+                                            <span class="label-error" *ngIf="createBillForm.controls.iva.errors?.required  && createBillForm.controls.iva.touched">Este campo es obligatorio</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Total" type="number" class="form-control" id="total" name="total" disabled value="{{createTotal}}">
+                                            </mat-form-field>
+                                            <span class="label-error" *ngIf="createBillForm.controls.total.errors?.required  && createBillForm.controls.total.touched">Este campo es obligatorio</span>
+                                        </div>
+                                    </div>
+                                    <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="saveBill()">Crear</button>
+                                    <div class="clearfix"></div>
+                              </form>
+                          </div>
+                          <!-- Editar factura -->
+                          <div class="tab-pane" [ngClass]="{ active: isSet(3) }" id="editbill">
+                                <form action="" [formGroup]="editBillForm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Código" maxlength="50" type="text" class="form-control" id="name" name="name" formControlName="name">
+                                                </mat-form-field>
+                                                <span class="label-error" *ngIf="editBillForm.controls.name.errors?.required  && editBillForm.controls.name.touched">Este campo es obligatorio</span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Valor neto" type="number" class="form-control" id="value" name="value" formControlName="value" (keyup)="editForIvaResult()">
+                                                </mat-form-field>
+                                                <span class="label-error" *ngIf="editBillForm.controls.value.errors?.required  && editBillForm.controls.value.touched">Este campo es obligatorio</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="IVA" type="number" class="form-control" id="iva" name="iva" formControlName="iva" (keyup)="editForIvaResult()">
+                                                </mat-form-field>
+                                                <span class="label-error" *ngIf="editBillForm.controls.iva.errors?.required  && editBillForm.controls.iva.touched">Este campo es obligatorio</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="total" type="number" class="form-control" id="total" name="total"  disabled value="{{editTotal}}">
+                                                </mat-form-field>
+                                                <span class="label-error" *ngIf="editBillForm.controls.total.errors?.required  && editBillForm.controls.total.touched">Este campo es obligatorio</span>
+                                            </div>
+                                        </div>
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="updateBill()">Editar</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+  </div>
+</div>
