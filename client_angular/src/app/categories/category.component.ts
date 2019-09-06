@@ -45,7 +45,7 @@ export class CategoryComponent implements OnInit {
       if(!isNullOrUndefined(res)){
         this.categories = res;
       }else{
-        this.showNotification('top','center','No se pudo traer las categrías.','danger');
+        this.showNotification('top','center','No se pudo traer las categorías.','danger');
       }
     })
   }
@@ -59,7 +59,7 @@ export class CategoryComponent implements OnInit {
         this.showEditForm = true;
         this.setTab(3);
       }else{
-        this.showNotification('top','center','No se pudo traer la categría de id = '+idcategory, 'danger');
+        this.showNotification('top','center','No se pudo traer la categoría de id = '+idcategory, 'danger');
       }
     })
   }
@@ -91,7 +91,7 @@ export class CategoryComponent implements OnInit {
         this.setTab(1);
         this.listCategories();
       }else{
-        this.showNotification('top','center','No se pudo crear la categría. Intentelo de nuevo!','danger');
+        this.showNotification('top','center','No se pudo crear la categoría. Intentelo de nuevo!','danger');
       }
     })
   }

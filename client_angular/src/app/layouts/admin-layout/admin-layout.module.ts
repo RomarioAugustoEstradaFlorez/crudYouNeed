@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { CategoryComponent } from '../../categories/category.component';
+import { BillComponent } from '../../bills/bill.component';
 
 import {
   MatButtonModule,
@@ -27,7 +28,8 @@ import {
     MatTooltipModule,
   ],
   declarations: [
-    CategoryComponent
+    CategoryComponent,
+    BillComponent
   ]
 })
 
