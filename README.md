@@ -2,10 +2,10 @@
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg)  ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-This CRUD works with Loopback 3, Angular 7 and [Material Admin](https://www.creative-tim.com/product/material-dashboard-angular2) in your free version build for angular, and i use different things of this theme to make a beatifull CRUD thinking on the user experience and make things easier for him.
+This CRUD works with Loopback 3, Angular 7 and [Material Admin](https://www.creative-tim.com/product/material-dashboard-angular2) in your free version build for angular, and i use different things of this theme to make a nice CRUD thinking on the user experience and make things easier for him.
 
 Special thanks go to:
-- [Romario Estrada](http://romaef.com/#!/inicio) for your beautifull develop.
+- [Romario Estrada](http://romaef.com/#!/inicio) for your nice develop.
 
 
 ## Table of Contents
