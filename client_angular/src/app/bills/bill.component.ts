@@ -162,17 +162,17 @@ export class BillComponent implements OnInit {
     var iva = '1.'+ this.createBillForm.value.iva;
     let ivad = parseFloat(iva);
     let total:number = (value / ivad);
-    this.createBillForm.controls['total'].setValue(parseInt(total));
-    this.createTotal = parseInt(total);
+    this.createBillForm.controls['total'].setValue(Math.floor(total));
+    this.createTotal = Math.floor(total);
   }
 
   editForIvaResult(){
-    var value = parseInt(this.editBillForm.value.value);
+    var value = Math.floor(this.editBillForm.value.value);
     var iva = '1.'+ this.editBillForm.value.iva;
     let ivad = parseFloat(iva);
     var total:number = (value / ivad);
-    this.editBillForm.controls['total'].setValue(parseInt(total));
-    this.editTotal = parseInt(total);
+    this.editBillForm.controls['total'].setValue(Math.floor(total));
+    this.editTotal = Math.floor(total);
   }
   /**
    *  Autor - Romario Augusto Estrada Flórez - ww.romaef.com
