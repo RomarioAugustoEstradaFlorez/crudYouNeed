@@ -1,0 +1,5 @@
+client_angular/node_modules/
+client_angular/package-lock.json
+
+server/node_modules/
+server/package-lock.json

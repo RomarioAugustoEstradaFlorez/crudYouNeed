@@ -1,0 +1,21 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "prueba_crud": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "prueba_crud",
+    "password": "",
+    "name": "prueba_crud",
+    "connector": "mysql",
+    "user": "root"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./client/public"
+  }
+}

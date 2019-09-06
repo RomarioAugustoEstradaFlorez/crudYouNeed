@@ -1,0 +1,51 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node .",
+    "posttest": "npm run lint"
+  },
+  "dependencies": {
+    "atob": "^2.1.2",
+    "bcrypt": "^3.0.6",
+    "bull": "^3.10.0",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "dateformat": "^3.0.3",
+    "fs": "0.0.1-security",
+    "helmet": "^3.15.0",
+    "loopback": "^3.0.0",
+    "loopback-boot": "^3.1.1",
+    "loopback-component-explorer": "^6.3.1",
+    "loopback-component-storage": "^3.6.1",
+    "loopback-connector-mysql": "^5.3.1",
+    "loopback-connector-rest": "^3.4.2",
+    "loopback-datasource-juggler": "^4.6.0",
+    "multer": "^1.4.1",
+    "node-schedule": "^1.3.2",
+    "nodemailer": "^6.2.1",
+    "path": "^0.12.7",
+    "robots.txt": "^1.1.0",
+    "serve-favicon": "^2.0.1",
+    "strong-error-handler": "^3.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-loopback": "^4.0.0",
+    "grunt-loopback-auto": "0.0.6"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "license": "MIT",
+  "description": "accounting desc"
+}

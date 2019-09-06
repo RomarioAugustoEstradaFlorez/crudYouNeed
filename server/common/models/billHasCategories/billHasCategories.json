@@ -1,0 +1,54 @@
+{
+  "name": "BillHasCategories",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "prueba_crud",
+      "table": "bill_has_categories"
+    },
+    "relations": {
+      "billsrel": {
+        "model": "Bills",
+        "type": "belongsTo",
+        "foreignKey": "idbill"
+      },
+      "categoriesrel": {
+        "model": "Categories",
+        "type": "belongsTo",
+        "foreignKey": "idcategory"
+      }
+    }
+  },
+  "properties": {
+    "idbill": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "idbill",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "idcategory": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "idcategory",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  }
+}
