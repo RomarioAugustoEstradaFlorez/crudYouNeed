@@ -35,7 +35,7 @@
     "strong-error-handler": "^3.2.0"
   },
   "devDependencies": {
-    "eslint": "^2.13.1",
+    "eslint": "^6.6.0",
     "eslint-config-loopback": "^4.0.0",
     "grunt-loopback-auto": "0.0.6"
   },
